@@ -1,0 +1,88 @@
+{
+  "General" : {
+    "version" : "1.00",
+    "project_directory" : "manticore",
+    "log_level" : "info"
+  },
+
+  "Runner" : {
+    "class_name" : "ProcessingEngine",
+    "sources" : [ "MockSource" ],
+    "sinks" : [ "MockSink" ],
+    "models" : [ "MockModel" ]
+  },
+
+  "MockModel" : {
+    "type" : "MockModel"
+  },
+
+  "FileSource" : {
+    "type" : "FileSource",
+    "decoder" : "Json",
+    "file_path" : "C:\\Users\\giuse\\Workbench\\file_output_20191121-101630"
+  },
+
+  "KafkaSource" : {
+    "type" : "KafkaSource",
+    "decoder" : "Json",
+    "broker_host" : "127.0.0.1:9092",
+    "symbols" : [ "COMPANY_DATA" ],
+    "auto_offset_reset" : "latest",
+    "max_poll_records" : 100
+  },
+
+  "MockSource" : {
+    "type" : "MockSource",
+    "decoder" : "Json",
+    "sleep_time" : 1
+  },
+
+  "NetworkSource" : {
+    "type" : "NetworkSource",
+    "decoder" : "Json",
+    "source_address" : "ipc:///Users/giuseppe/0"
+  },
+
+  "RedisSource" : {
+    "type": "RedisSource",
+    "decoder": "Json",
+    "address": "localhost",
+    "port": "6379",
+    "symbols": [ "MOCK_TOPIC" ]
+  },
+
+  "RedisSink" : {
+    "type": "RedisSink",
+    "encoder": "Json",
+    "address": "localhost",
+    "port": "6379",
+    "flush_threshold": 0
+  },
+
+  "FileSink" : {
+    "type" : "FileSink",
+    "encoder" : "Json",
+    "file_path" : "C:\\Users\\giuse\\Workbench\\file_output",
+    "flush_threshold" : 0
+  },
+
+  "KafkaSink" : {
+    "type" : "KafkaSink",
+    "encoder" : "Json",
+    "broker_host" : "127.0.0.1:9092",
+    "flush_threshold" : 0
+  },
+
+  "MockSink" : {
+    "type" : "MockSink",
+    "encoder" : "Json",
+    "flush_threshold" : 0
+  },
+
+  "NetworkSink" : {
+    "type" : "NetworkSink",
+    "encoder" : "Json",
+    "address" : "ipc:///Users/giuseppe/0",
+    "flush_threshold" : 0
+  }
+}

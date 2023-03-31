@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+import "google/protobuf/any.proto";
+
+package protobuf;
+
+message package {
+    string obj_type                             = 1;
+    uint64 obj_version                          = 2;
+    string source                               = 3;
+    string destination                          = 4;
+    google.protobuf.Any payload                 = 5;
+}
+
+message object {
+    string id                                   = 1;
+    uint64 timestamp                            = 2;
+}
+
+message request {
+    object obj                                  = 1;
+    map<string, google.protobuf.Any> filters    = 2;
+}
+
+message response {
+    object obj                                  = 1;
+    uint64 status                               = 2;
+    string detail                               = 3;
+}

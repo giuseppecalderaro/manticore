@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package protobuf;
+
+message mock_v1 {
+    object obj  = 1;
+    string data = 2;
+}
+
+message mock_v2 {
+    object obj  = 1;
+    string data = 2;
+    string data2 = 3;
+}
